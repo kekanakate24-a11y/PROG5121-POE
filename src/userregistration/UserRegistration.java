@@ -1,6 +1,7 @@
 
 package userregistration;
 
+import java.util.Scanner;
 
 public class UserRegistration {
 

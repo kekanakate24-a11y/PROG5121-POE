@@ -29,8 +29,53 @@ public class LogIn {
        return Pattern.matches(regex, password);
     }
 // phone number check if south african with international code(+27)
+    public boolean checkCellPhoneNumber(String number) {
+        String regex = "\\+27[0-9]{9}$";
+        return Pattern.matches(regex, number);
+    }
+    // registration method 
+   
+    // username
+    public String registerUser(String username, String password, String cell) {
+        if (!checkUsername(username)){
+            return "Password is not correctly formatted; please ensure that the useername contains an underscore and is no more than five characters in length.";
+        }
+    // password
+    if (!checkPasswordComplexity(password)) {
+        return "Password not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number and a special character";
+    } 
     
+    // cell number
+    if (!checkCellPhoneNumber(cell)){
+        return "Cell phone number incorrectly formatted or does not contain international code.";
+    } 
+    storedUsername = username;
     
+    storedPassword = password;
+    storedCell = cell;
     
+    return "User successfully registered.";
+    }
+    
+// login check
+    public boolean loginUser(String username, String password) {
+        return username.equals(storedUsername)&&password.equals(storedPassword);
+    }
+// login message
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+// login display
+    public String returnLoginStatus(boolean status) {
+        if (status){
+            return "Welcome back" + firstName + "," + lastName + "It is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again";
+        }
+    }
     
 }
