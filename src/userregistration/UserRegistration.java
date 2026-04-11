@@ -22,6 +22,13 @@ public class UserRegistration {
         System.out.print("Enter cell phone number (+27): ");
         String cell = input.nextLine();
         
+        System.out.print("Enter first name: ");
+        String firstName = input.nextLine();
+        
+        System.out.print("Enter last name: ");
+        String lastName = input.nextLine();
+
+      
         String registrationResult = login.registerUser(username, password, cell);
         
         System.out.println(registrationResult);

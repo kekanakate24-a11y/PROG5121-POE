@@ -17,6 +17,8 @@ public class LogIn {
     private String storedCell;
     private String firstName;
     private String lastName;
+    private String first;
+    private String last;
     
 
  // username checks for underscore ( _ ) and length <= 5 characters
@@ -36,7 +38,7 @@ public class LogIn {
     // registration method 
    
     // username
-    public String registerUser(String username, String password, String cell) {
+    public String registerUser(String username, String password, String cell){
         if (!checkUsername(username)){
             return "Password is not correctly formatted; please ensure that the useername contains an underscore and is no more than five characters in length.";
         }
@@ -50,9 +52,12 @@ public class LogIn {
         return "Cell phone number incorrectly formatted or does not contain international code.";
     } 
     storedUsername = username;
-    
     storedPassword = password;
     storedCell = cell;
+    firstName = first;
+    lastName = last;
+
+
     
     return "User successfully registered.";
     }
@@ -72,7 +77,7 @@ public class LogIn {
 // login display
     public String returnLoginStatus(boolean status) {
         if (status){
-            return "Welcome back" + firstName + "," + lastName + "It is great to see you again.";
+            return "Welcome back ,It is great to see you again.";
         } else {
             return "Username or password incorrect, please try again";
         }
