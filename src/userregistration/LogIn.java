@@ -25,7 +25,7 @@ public class LogIn {
     }
 //password check for number, special character, capital letter and length >=8 characters
     public boolean checkPasswordComplexity(String password) {
-       String regex = ("(?=.[A-Z])(=.*[0-9](?=.*[!@#$%^&*].{8,}$");
+      String regex = "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$";
        return Pattern.matches(regex, password);
     }
 // phone number check if south african with international code(+27)
