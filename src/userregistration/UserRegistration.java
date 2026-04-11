@@ -25,6 +25,21 @@ public class UserRegistration {
         String registrationResult = login.registerUser(username, password, cell);
         
         System.out.println(registrationResult);
-    }
     
+    
+    // logging in the user
+    if (registrationResult.equals("User successfully registered.")){
+        System.out.println(" LOGIN ");
+        
+        System.out.print("Enter username: ");
+        String logInUser = input.nextLine();
+        
+        System.out.print("Enter password: ");
+        String logInPass = input.nextLine();
+        
+        
+    boolean loginStatus = login.loginUser(logInUser, logInPass);
+    System.out.println(login.returnLoginStatus(loginStatus));
+    }
+  }
 }
