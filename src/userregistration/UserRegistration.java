@@ -23,6 +23,8 @@ public class UserRegistration {
         String cell = input.nextLine();
         
         String registrationResult = login.registerUser(username, password, cell);
+        
+        System.out.println(registrationResult);
     }
     
 }
