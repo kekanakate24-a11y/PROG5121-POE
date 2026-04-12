@@ -19,7 +19,7 @@ public class LogInTest {
 
     LogIn login = new LogIn();
 
-    // ===== Username Tests =====
+    // ===== Username Tests ====
     @Test
     public void testUsernameCorrectlyFormatted() {
         assertTrue(login.checkUsername("kyl_1"));
