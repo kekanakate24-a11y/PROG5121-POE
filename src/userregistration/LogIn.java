@@ -40,7 +40,7 @@ public class LogIn {
     // username
     public String registerUser(String username, String password, String cell){
         if (!checkUsername(username)){
-            return "Password is not correctly formatted; please ensure that the useername contains an underscore and is no more than five characters in length.";
+            return "Username is not correctly formatted; please ensure that the useername contains an underscore and is no more than five characters in length.";
         }
     // password
     if (!checkPasswordComplexity(password)) {
