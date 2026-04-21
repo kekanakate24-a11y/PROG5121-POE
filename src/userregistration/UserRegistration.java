@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class UserRegistration {
 
+    private static Object Message;
+
     
     public static void main(String[] args) {
         
@@ -62,7 +64,9 @@ public class UserRegistration {
             System.out.println("Option 1) Send Messages");
             System.out.println("Option 2) Show recently sent messages ");
             System.out.println("Option 3) Quit");
-            int option = input.nextLine();
+            
+            int opition = input.nextLine();
+            input.nextLine();
             
             switch (option){
                 
@@ -72,7 +76,7 @@ public class UserRegistration {
                         System.out.println("You have reached your message limit");
                         
                         break;
-                    
+                    }
                     System.out.print("Enter recepient phone number (+27...)");
                     String recepient = input.nextLine();
                     

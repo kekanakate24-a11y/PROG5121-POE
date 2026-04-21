@@ -1,75 +1,83 @@
 
 package userregistration;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 public class Messages {
+
     private String messageID;
     private int messageNumber;
-    private String recepient;
+    private String recipient;
     private String messageText;
     private String messageHash;
-    
+
     private static int totalMessages = 0;
-    
-    // message contructor
-    public Messages(int messageNumber, String recepient, String messageText){
-        
+
+    // Constructor
+    public Messages(int messageNumber, String recipient, String messageText) {
         this.messageID = generateMessageID();
         this.messageNumber = messageNumber;
-        this.recepient = recepient;
+        this.recipient = recipient;
         this.messageText = messageText;
-        String createMessageHash = null;
-        this.messageHash = createMessageHash;
+        this.messageHash = createMessageHash();
     }
-    
-    // random 10 digit message ID
-    private String generateMessageID(){
+
+    // Generate random 10 digit message ID
+    private String generateMessageID() {
         Random rand = new Random();
-        long num = (long)(Math.random()*1_000_000_0000L);
+        long num = (long)(Math.random() * 1_000_000_0000L);
         return String.format("%010d", num);
     }
-    
-    // South african phone number validation
-    public static boolean checkMessageLength(String msg){
-        return msg.length() <=250;
+
+    // Validate SA phone number
+    public static boolean checkRecipientCell(String number) {
+        return number.matches("^\\+27\\d{9}$");
     }
-    // Message hash creation
-    private String createMessageHash(){
+
+    // Validate message length
+    public static boolean checkMessageLength(String msg) {
+        return msg.length() <= 250;
+    }
+
+    // Create message hash
+    private String createMessageHash() {
         String[] words = messageText.trim().split("\\s+");
         String firstWord = words[0];
-        String lastWord = words[words.length-1];
-        
-        return messageID.substring(0,2) + ":" + messageNumber + ":" + (firstWord + lastWord).toUpperCase();
+        String lastWord = words[words.length - 1];
+
+        return messageID.substring(0, 2) + ":" +
+               messageNumber + ":" +
+               (firstWord + lastWord).toUpperCase();
     }
-    
-    // message display information
-    public String printMessage(){
-        return "\n===== Message Sent =====" +
-                "\nMessage ID: " + messageID +
-                "\nMessage Hash: " + messageHash +
-                "\nRecepient: " + recepient +
-                "\nMessage: " + messageText;       
+
+    // Display message info
+    public String printMessage() {
+        return "\n--- Message Sent ---" +
+               "\nMessage ID: " + messageID +
+               "\nMessage Hash: " + messageHash +
+               "\nRecipient: " + recipient +
+               "\nMessage: " + messageText;
     }
-    // Message save to JSON file
+
+    // Save message to JSON file
     public void storeMessageJSON() {
         JSONArray messageList = new JSONArray();
         JSONObject messageDetails = new JSONObject();
 
         messageDetails.put("MessageID", messageID);
         messageDetails.put("MessageHash", messageHash);
-        messageDetails.put("Recipient", recepient);
+        messageDetails.put("Recipient", recipient);
         messageDetails.put("Message", messageText);
 
         messageList.add(messageDetails);
 
         try (FileWriter file = new FileWriter("messages.json", true)) {
-            file.write(messageList.toJSONString());
+            file.write(messageList.toJSONArray());
             file.write(System.lineSeparator());
             System.out.println("Message stored in JSON file.");
         } catch (IOException e) {
