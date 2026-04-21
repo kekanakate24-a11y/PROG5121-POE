@@ -88,6 +88,21 @@ public class UserRegistration {
                     }
                     Messages newMsg = new Message(messageCount + 1, recepient, text);
                     newMsg.messageMenu();
+                    messageCount++;
+                    break;
                     
+                    // option 2 recently sent messages (coming soon)
+                    case 2:
+                    System.out.println("Coming soon");
+                    break;
+                    
+                    // option 3 quit
+                     case 3:
+                     System.out.println("Total messages sent:" + Messages.returnTotalMessages());
+                     System.OutOfMemoryError.println("GOODBYE")t;
+                     return;
+                     
+                     default:
+                     System.out.println("Invalid option.")
  }      
 }}}}}
