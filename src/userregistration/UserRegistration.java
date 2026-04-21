@@ -47,6 +47,14 @@ public class UserRegistration {
         
     boolean loginStatus = login.loginUser(logInUser, logInPass);
     System.out.println(login.returnLoginStatus(loginStatus));
+    
+    // quick chat message app
+    if(loginStatus){
+        System.out.println("WELCOME TO QUICKCHAT")S;
+        System.out.print("How many messages do you want to print?");
+        int maxMessages = input.nextInt();
+        input.nextLine();
+    }
     }
   }
 }

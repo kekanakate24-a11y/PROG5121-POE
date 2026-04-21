@@ -24,6 +24,7 @@ public class Messages {
         this.messageNumber = messageNumber;
         this.recepient = recepient;
         this.messageText = messageText;
+        String createMessageHash = null;
         this.messageHash = createMessageHash;
     }
     
