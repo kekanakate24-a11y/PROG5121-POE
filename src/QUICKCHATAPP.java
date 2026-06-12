@@ -125,4 +125,21 @@ public class QUICKCHATAPP {
                     currentMessageCounter++;
                     break;
 
-                
+                case 2:
+                    System.out.println("\n[Feature Status]: Coming Soon.");
+                    break;
+
+                case 3:
+                    running = false;
+                    System.out.println("\nTotal count of successfully dispatched messages: " + totalMessagesSentCount);
+                    System.out.println("Thank you for using QuickChat. Goodbye!");
+                    break;
+
+                default:
+                    System.out.println("Invalid input choice. Please select 1, 2, or 3.");
+            }
+        }
+        input.close();
+    }
+}
+
