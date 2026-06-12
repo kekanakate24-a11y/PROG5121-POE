@@ -20,15 +20,7 @@ public class MESSAGE {
         this.status = "Disregarded"; // default
     }
 
-    // Autogenerates a 10-digit random tracking number as a string
-    private String generateMessageID() {
-        Random rand = new Random();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            sb.append(rand.nextInt(10));
-        }
-        return sb.toString();
-    }
+    
 
     public boolean checkMessageID() {
         return this.messageId != null && this.messageId.length() <= 10;
